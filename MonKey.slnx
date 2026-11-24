@@ -1,3 +1,12 @@
 <Solution>
-  <Project Path="MonKey/MonKey.csproj" />
+  <Folder Name="/Data/">
+    <Project Path="MonKey.Data.Common/MonKey.Data.Common.csproj" />
+    <Project Path="MonKey.Data.Models/MonKey.Data.Models.csproj" />
+    <Project Path="MonKey.Data/MonKey.Data.csproj" />
+  </Folder>
+  <Folder Name="/Services/" />
+  <Folder Name="/Tests/" />
+  <Folder Name="/Web/">
+    <Project Path="MonKey/MonKey.csproj" />
+  </Folder>
 </Solution>
