@@ -164,9 +164,9 @@ namespace MonKey.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasComment("Account's GUID");
 
-                    b.Property<decimal>("Amount")
+                    b.Property<decimal>("Balance")
                         .HasColumnType("decimal(14,2)")
-                        .HasComment("The Amount of the Account");
+                        .HasComment("The Balance of the Account");
 
                     b.Property<Guid>("CurrencyId")
                         .HasColumnType("uniqueidentifier")
@@ -270,6 +270,33 @@ namespace MonKey.Data.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("MonKey.Data.Models.Category", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasComment("Category's GUID");
+
+                    b.Property<string>("IconUrl")
+                        .IsRequired()
+                        .HasMaxLength(2048)
+                        .HasColumnType("nvarchar(2048)")
+                        .HasComment("URL to Category's Icon");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)")
+                        .HasComment("Category's Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories", t =>
+                        {
+                            t.HasComment("The Category of the Transaction Performed");
+                        });
+                });
+
             modelBuilder.Entity("MonKey.Data.Models.Currency", b =>
                 {
                     b.Property<Guid>("Id")
@@ -340,7 +367,11 @@ namespace MonKey.Data.Migrations
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(14,2)")
-                        .HasComment("The Amount of the Transaction");
+                        .HasComment("The amount in the account's currency; balance = SUM(Amount)");
+
+                    b.Property<Guid?>("CategoryId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasComment("Category (null for transfers)");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2")
@@ -350,23 +381,35 @@ namespace MonKey.Data.Migrations
                         .HasColumnType("datetime2")
                         .HasComment("Time When Transaction Is Modified For Last Time");
 
-                    b.Property<int>("TransactionType")
-                        .HasColumnType("int")
+                    b.Property<decimal?>("ExchangeRate")
+                        .HasColumnType("decimal(18,8)")
+                        .HasComment("Exchange rate used for a cross-currency transfer (source → destination); null otherwise");
+
+                    b.Property<string>("TransactionType")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
                         .HasComment("Transaction Type Enum");
 
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid?>("TransferId")
                         .HasColumnType("uniqueidentifier")
-                        .HasComment("User ID of Creator of Transaction");
+                        .HasComment("Shared by both legs of a transfer; null otherwise");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AccountId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("CategoryId");
 
-                    b.ToTable("Transaction", t =>
+                    b.HasIndex("TransferId");
+
+                    b.ToTable("Transactions", t =>
                         {
                             t.HasComment("Transaction Performed On an Account");
+
+                            t.HasCheckConstraint("CK_Transaction_Amount", "([TransactionType] <> 'Income' OR [Amount] > 0) AND ([TransactionType] <> 'Outcome' OR [Amount] < 0) AND [Amount] <> 0");
+
+                            t.HasCheckConstraint("CK_Transaction_Transfer", "([TransactionType] = 'Transfer' AND [TransferId] IS NOT NULL AND [CategoryId] IS NULL) OR ([TransactionType] <> 'Transfer' AND [TransferId] IS NULL AND [ExchangeRate] IS NULL)");
                         });
                 });
 
@@ -448,15 +491,14 @@ namespace MonKey.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("MonKey.Data.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("MonKey.Data.Models.Category", "Category")
+                        .WithMany("Transactions")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Account");
 
-                    b.Navigation("User");
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("MonKey.Data.Models.Account", b =>
@@ -467,6 +509,11 @@ namespace MonKey.Data.Migrations
             modelBuilder.Entity("MonKey.Data.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Accounts");
+                });
+
+            modelBuilder.Entity("MonKey.Data.Models.Category", b =>
+                {
+                    b.Navigation("Transactions");
                 });
 #pragma warning restore 612, 618
         }

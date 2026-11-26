@@ -17,6 +17,7 @@
             this.mapper = mapper;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             Guid userId = this.GetUserGuid() 
@@ -30,6 +31,7 @@
 
             return View(allAccountViewModels);
         }
+
     }
 }
     

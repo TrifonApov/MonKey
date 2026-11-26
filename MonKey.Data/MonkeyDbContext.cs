@@ -14,9 +14,13 @@
 
         }
 
-        public DbSet<Account> Accounts => Set<Account>();
+        public DbSet<Account> Accounts { get; set; } = null!;
 
-        public DbSet<Currency> Currencies => Set<Currency>();
+        public DbSet<Category> Categories { get; set; } = null!;
+
+        public DbSet<Currency> Currencies { get; set; } = null!;
+        
+        public DbSet<Transaction> Transactions{ get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

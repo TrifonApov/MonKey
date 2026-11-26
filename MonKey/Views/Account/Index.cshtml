@@ -29,7 +29,7 @@
                             <span class="account-currency">@account.CurrencyName (@account.CurrencyCode)</span>
                         </div>
                     </div>
-                    <p class="account-amount">@account.Amount.ToString("N2") @account.CurrencyCode</p>
+                    <p class="account-balance">@account.Balance.ToString("N2") @account.CurrencyCode</p>
                     <p class="account-description">@(string.IsNullOrWhiteSpace(account.Description) ? "No description" : account.Description)</p>
                     <div class="account-card-actions">
                         <a class="btn btn-outline-secondary" asp-controller="Account" asp-action="Edit" asp-route-id="@account.Id">Edit</a>

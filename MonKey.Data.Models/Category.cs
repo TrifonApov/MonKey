@@ -20,7 +20,7 @@
         public string IconUrl { get; set; } = null!;
 
         [Comment("All Category's Transactions")]
-        public IEnumerable<Transaction> Transactions { get; set; }
+        public ICollection<Transaction> Transactions { get; set; }
             = new List<Transaction>();
     }
 }

@@ -20,9 +20,9 @@
         [MaxLength(EntityValidation.Account.DescriptionNameMaxLength)]
         public string? Description { get; set; }
 
-        [Comment("The Amount of the Account")]
-        [Column(TypeName = EntityValidation.Transaction.AmountPrecisionType)]
-        public decimal Amount { get; set; }
+        [Comment("The Balance of the Account")]
+        [Column(TypeName = EntityValidation.Transaction.MoneyPrecisionType)]
+        public decimal Balance { get; set; }
 
         [Comment("Is Account Deleted")]
         public bool IsDeleted { get; set; } = false;

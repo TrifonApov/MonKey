@@ -20,7 +20,8 @@
 
         public static class Transaction
         {
-            public const string AmountPrecisionType = "decimal(14,2)";
+            public const string MoneyPrecisionType = "decimal(14,2)";
+            public const string ExchangeRatePrecisionType = "decimal(18,8)";
         }
 
         public static class Currency
