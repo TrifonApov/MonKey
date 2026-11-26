@@ -6,7 +6,10 @@ namespace MonKey.Web
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using MonKey.Data;
+    using Services.AutoMapping;
     using Services.Core;
+    using Services.Models.Account;
+    using ViewModels.Account;
 
     public class Program
     {
@@ -21,7 +24,7 @@ namespace MonKey.Web
                                       throw new InvalidOperationException(
                                           "Connection string 'DefaultConnection' not found.");
             
-            //TODO: AutoMapperConfig.RegisterMappings();
+            AutoMapperConfig.RegisterMappings(typeof(AllAccountDto).Assembly, typeof(AllAccountViewModel).Assembly);
 
             builder.Services.AddDbContext<MonkeyDbContext>(options =>
                 options.UseSqlServer(connectionString));
@@ -56,8 +59,7 @@ namespace MonKey.Web
 
             builder.Services.AddControllersWithViews();
 
-            // TODO: Add AutoMapper
-            // builder.Services.AddSingleton(AutoMapperConfig.MapperInstance);
+            builder.Services.AddSingleton(AutoMapperConfig.MapperInstance);
 
             builder.Services.Configure<IdentityOptions>(options =>
             {

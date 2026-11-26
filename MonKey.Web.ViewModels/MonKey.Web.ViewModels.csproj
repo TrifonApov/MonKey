@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MonKey.Services.Models\MonKey.Services.Models.csproj" />
+  </ItemGroup>
+
 </Project>

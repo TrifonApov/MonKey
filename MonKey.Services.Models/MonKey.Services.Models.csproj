@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MonKey.Data\MonKey.Data.csproj" />
+    <ProjectReference Include="..\MonKey.Services.AutoMapping\MonKey.Services.AutoMapping.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,5 +1,6 @@
 ﻿namespace MonKey.Services.Core
 {
+    using AutoMapper;
     using Contracts;
     using Data.Models;
     using Data.Repository.Contracts;
@@ -8,10 +9,12 @@
     public class AccountService : IAccountService
     {
         private readonly IAccountRepository accountRepository;
+        private readonly IMapper mapper;
 
-        public AccountService(IAccountRepository accountRepository)
+        public AccountService(IAccountRepository accountRepository, IMapper mapper)
         {
             this.accountRepository = accountRepository;
+            this.mapper = mapper;
         }
 
         public async Task<IEnumerable<AllAccountDto>> GetAllUserAccountsOrderByNameAsync(Guid userId)
@@ -19,17 +22,11 @@
             IEnumerable<Account> userAccounts = await accountRepository
                 .GetAllUserAccountsOrderByNameAsync(userId);
 
-            IEnumerable<AllAccountDto> allAccountDtos = userAccounts
-                .Select(ua => new AllAccountDto()
-                {
-                    Id = ua.Id,
-                    Name = ua.Name,
-                    Amount = ua.Amount,
-                    CurrencyCode = ua.Currency.Code,
-                    CurrencyName = ua.Currency.Name,
-                    Description = ua.Description
-                })
-                .OrderBy(dto=>dto.Name);
+
+            IEnumerable<AllAccountDto> allAccountDtos = mapper
+                .Map<IEnumerable<AllAccountDto>>(userAccounts)
+                .OrderBy(a => a.Name)
+                .ToArray();
 
             return allAccountDtos;
         }

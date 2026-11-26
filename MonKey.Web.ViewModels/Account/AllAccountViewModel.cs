@@ -1,6 +1,9 @@
 ﻿namespace MonKey.Web.ViewModels.Account
 {
-    public class AllAccountViewModel
+    using Services.AutoMapping;
+    using Services.Models.Account;
+
+    public class AllAccountViewModel : IMapFrom<AllAccountDto>
     {
         public Guid Id { get; set; }
 

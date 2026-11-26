@@ -1,5 +1,6 @@
 ﻿namespace MonKey.Controllers
 {
+    using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
     using Services.Core.Contracts;
     using Services.Models.Account;
@@ -8,10 +9,12 @@
     public class AccountController : BaseController
     {
         private readonly IAccountService accountService;
+        private readonly IMapper mapper;
 
-        public AccountController(IAccountService accountService)
+        public AccountController(IAccountService accountService, IMapper mapper)
         {
             this.accountService = accountService;
+            this.mapper = mapper;
         }
 
         public async Task<IActionResult> Index()
@@ -22,16 +25,8 @@
             IEnumerable<AllAccountDto> accounts = await this.accountService
                 .GetAllUserAccountsOrderByNameAsync(userId);
 
-            IEnumerable<AllAccountViewModel> allAccountViewModels = accounts
-                .Select(a => new AllAccountViewModel()
-                {
-                    Id = a.Id,
-                    Name = a.Name,
-                    Amount = a.Amount,
-                    CurrencyCode = a.CurrencyCode,
-                    CurrencyName = a.CurrencyName,
-                    Description = a.Description
-                });
+            IEnumerable<AllAccountViewModel> allAccountViewModels = mapper
+                .Map<IEnumerable<AllAccountViewModel>>(accounts);
 
             return View(allAccountViewModels);
         }
