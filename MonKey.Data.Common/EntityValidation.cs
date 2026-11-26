@@ -6,8 +6,8 @@
         {
             public const int AccountNameMinLength = 3;
             public const int AccountNameMaxLength = 15;
-            public const int DescriptionNameMinLength = 3;
-            public const int DescriptionNameMaxLength = 15;
+            public const int DescriptionNameMinLength = 5;
+            public const int DescriptionNameMaxLength = 200;
         }
 
         public static class Category

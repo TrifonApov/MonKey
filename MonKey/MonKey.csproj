@@ -18,6 +18,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MonKey.Data\MonKey.Data.csproj" />
+    <ProjectReference Include="..\MonKey.Services.Core\MonKey.Services.Core.csproj" />
+    <ProjectReference Include="..\MonKey.Services.Models\MonKey.Services.Models.csproj" />
+    <ProjectReference Include="..\MonKey.Web.Infrastructure\MonKey.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\MonKey.Web.ViewModels\MonKey.Web.ViewModels.csproj" />
   </ItemGroup>
 

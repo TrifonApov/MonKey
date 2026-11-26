@@ -1,9 +1,12 @@
 namespace MonKey.Web
 {
     using Data.Models;
+    using Data.Repository;
+    using Infrastructure.Extensions;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using MonKey.Data;
+    using Services.Core;
 
     public class Program
     {
@@ -25,9 +28,8 @@ namespace MonKey.Web
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            //TODO: Add extensions in Monkey.Web.Infrastructure for register repositories and services
-            //builder.Services.RegisterRepositories(typeof(MovieRepository));
-            //builder.Services.RegisterUserServices(typeof(MovieService));
+            builder.Services.RegisterRepositories(typeof(AccountRepository));
+            builder.Services.RegisterUserServices(typeof(AccountService));
 
             //TODO: Add extensions in Monkey.Web.Infrastructure
             //builder.Services.AddTransient<IIdentitySeeder, IdentitySeeder>();

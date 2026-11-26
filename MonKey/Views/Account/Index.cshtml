@@ -1,0 +1,53 @@
+@model IEnumerable<AllAccountViewModel>
+
+@{
+    ViewData["Title"] = "Your accounts";
+}
+
+<div class="container dashboard-page account-page">
+    <section class="welcome-row" aria-labelledby="accounts-title">
+        <div>
+            <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"></span> YOUR MONEY, IN FOCUS</p>
+            <h1 id="accounts-title">Your accounts</h1>
+            <p class="welcome-copy">A clear view of where your money is held.</p>
+        </div>
+        <a class="account-create-button" asp-controller="Account" asp-action="Create">
+            <span aria-hidden="true">＋</span> Create new account
+        </a>
+    </section>
+
+    @if (Model.Any())
+    {
+        <section class="account-list" aria-label="Your accounts">
+            @foreach (var account in Model)
+            {
+                <article class="account-card">
+                    <div class="account-card-heading">
+                        <span class="account-card-icon" aria-hidden="true">$</span>
+                        <div class="account-card-title">
+                            <h2>@account.Name</h2>
+                            <span class="account-currency">@account.CurrencyName (@account.CurrencyCode)</span>
+                        </div>
+                    </div>
+                    <p class="account-amount">@account.Amount.ToString("N2") @account.CurrencyCode</p>
+                    <p class="account-description">@(string.IsNullOrWhiteSpace(account.Description) ? "No description" : account.Description)</p>
+                    <div class="account-card-actions">
+                        <a class="btn btn-outline-secondary" asp-controller="Account" asp-action="Edit" asp-route-id="@account.Id">Edit</a>
+                        <form class="account-delete-form" asp-controller="Account" asp-action="Delete" asp-route-id="@account.Id" method="post">
+                            <button class="btn btn-outline-danger" type="submit">Delete</button>
+                        </form>
+                    </div>
+                </article>
+            }
+        </section>
+    }
+    else
+    {
+        <section class="account-empty-state" aria-labelledby="empty-accounts-title">
+            <span class="account-empty-icon" aria-hidden="true">＋</span>
+            <h2 id="empty-accounts-title">Your money story starts here</h2>
+            <p>You don't have any accounts yet. Add your first account to keep your balances together in one place.</p>
+            <a class="account-create-button" asp-controller="Account" asp-action="Create">Create your first account</a>
+        </section>
+    }
+</div>

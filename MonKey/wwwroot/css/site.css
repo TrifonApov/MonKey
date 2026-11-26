@@ -882,6 +882,162 @@ a:hover {
   line-height: 1.7;
 }
 
+.account-page .welcome-row {
+  align-items: center;
+}
+
+.account-page .welcome-row h1 {
+  font-size: clamp(32px, 4vw, 40px);
+}
+
+.account-create-button {
+  flex: 0 0 auto;
+  padding: 11px 17px;
+  border: 0;
+  border-radius: 11px;
+  color: #fff;
+  background: var(--orange);
+  box-shadow: 0 5px 13px rgba(222, 107, 42, 0.17);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.account-create-button:hover {
+  color: #fff;
+  background: var(--orange-deep);
+}
+
+.account-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.account-card,
+.account-empty-state {
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+}
+
+.account-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: 21px;
+}
+
+.account-card-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.account-card-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 14px;
+  color: var(--orange-deep);
+  background: var(--orange-soft);
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.account-card-title {
+  min-width: 0;
+  flex: 1;
+}
+
+.account-card-title h2 {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.account-currency {
+  display: inline-block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.account-amount {
+  margin: 21px 0 0;
+  color: var(--ink);
+  font-family: 'Manrope', 'Segoe UI', sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  overflow-wrap: anywhere;
+}
+
+.account-description {
+  min-height: 22px;
+  margin: 5px 0 0;
+  color: var(--muted-dark);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.account-card-actions {
+  display: flex;
+  gap: 9px;
+  margin-top: 19px;
+  padding-top: 15px;
+  border-top: 1px solid var(--line);
+}
+
+.account-card-actions .btn {
+  min-width: 76px;
+  border-radius: 9px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.account-delete-form {
+  margin: 0;
+}
+
+.account-empty-state {
+  padding: clamp(28px, 5vw, 48px);
+  text-align: center;
+}
+
+.account-empty-icon {
+  display: grid;
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 17px;
+  place-items: center;
+  border-radius: 18px;
+  color: var(--orange-deep);
+  background: var(--orange-soft);
+  font-size: 25px;
+}
+
+.account-empty-state h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.6px;
+}
+
+.account-empty-state p {
+  max-width: 420px;
+  margin: 10px auto 20px;
+  color: var(--muted-dark);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
 .site-footer {
   flex-shrink: 0;
   border-top: 1px solid var(--line);
@@ -1020,6 +1176,10 @@ a:hover {
     gap: 18px;
     padding-top: 39px;
     padding-bottom: 27px;
+  }
+
+  .account-page .welcome-row {
+    align-items: flex-start;
   }
 
   .preview-badge {
