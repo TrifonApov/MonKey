@@ -4,9 +4,17 @@
     <Project Path="MonKey.Data.Models/MonKey.Data.Models.csproj" />
     <Project Path="MonKey.Data/MonKey.Data.csproj" />
   </Folder>
-  <Folder Name="/Services/" />
+  <Folder Name="/Services/">
+    <Project Path="MonKey.Services.AutoMapping/MonKey.Services.AutoMapping.csproj" Id="1eef1363-8a9f-4b5b-b4ef-5e8cd8fcf42f" />
+    <Project Path="MonKey.Services.Common/MonKey.Services.Common.csproj" Id="f9a25004-86e2-4999-88a7-719d498e1e57" />
+    <Project Path="MonKey.Services.Core/MonKey.Services.Core.csproj" Id="9199a655-8acb-428c-9530-fc8af35dc40e" />
+    <Project Path="MonKey.Services.Models/MonKey.Services.Models.csproj" Id="2a6cf813-d4c8-46fe-b493-ee841ea53a28" />
+  </Folder>
   <Folder Name="/Tests/" />
   <Folder Name="/Web/">
+    <Project Path="MonKey.Web.Infrastructure/MonKey.Web.Infrastructure.csproj" Id="9be818e3-6847-4328-930a-8b8d1f2c3b6e" />
+    <Project Path="MonKey.Web.ViewModels/MonKey.Web.ViewModels.csproj" Id="3ae583e0-986d-4a99-8a43-1bd1a5b57155" />
     <Project Path="MonKey/MonKey.csproj" />
   </Folder>
+  <Project Path="MonKey.GCommon/MonKey.GCommon.csproj" Id="cd7c1f98-a97f-4fbf-b39f-89d2bd96ab68" />
 </Solution>

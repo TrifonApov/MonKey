@@ -164,6 +164,10 @@ namespace MonKey.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasComment("Account's GUID");
 
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(14,2)")
+                        .HasComment("The Amount of the Account");
+
                     b.Property<Guid>("CurrencyId")
                         .HasColumnType("uniqueidentifier")
                         .HasComment("Account Currency's ID");
@@ -291,7 +295,10 @@ namespace MonKey.Data.Migrations
                     b.HasIndex("Code")
                         .IsUnique();
 
-                    b.ToTable("Currencies");
+                    b.ToTable("Currencies", t =>
+                        {
+                            t.HasComment("The Account Currency");
+                        });
 
                     b.HasData(
                         new
@@ -317,6 +324,49 @@ namespace MonKey.Data.Migrations
                             Id = new Guid("c2003e10-42e9-46e5-a278-8cad7712ab12"),
                             Code = "RON",
                             Name = "Romanian Leu"
+                        });
+                });
+
+            modelBuilder.Entity("MonKey.Data.Models.Transaction", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasComment("Transaction's GUID");
+
+                    b.Property<Guid>("AccountId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasComment("The Account In Which the Transaction Was Made");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(14,2)")
+                        .HasComment("The Amount of the Transaction");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2")
+                        .HasComment("Time When Transaction Is Created");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2")
+                        .HasComment("Time When Transaction Is Modified For Last Time");
+
+                    b.Property<int>("TransactionType")
+                        .HasColumnType("int")
+                        .HasComment("Transaction Type Enum");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasComment("User ID of Creator of Transaction");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Transaction", t =>
+                        {
+                            t.HasComment("Transaction Performed On an Account");
                         });
                 });
 
@@ -388,6 +438,30 @@ namespace MonKey.Data.Migrations
                     b.Navigation("Currency");
 
                     b.Navigation("Owner");
+                });
+
+            modelBuilder.Entity("MonKey.Data.Models.Transaction", b =>
+                {
+                    b.HasOne("MonKey.Data.Models.Account", "Account")
+                        .WithMany("Transactions")
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("MonKey.Data.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MonKey.Data.Models.Account", b =>
+                {
+                    b.Navigation("Transactions");
                 });
 
             modelBuilder.Entity("MonKey.Data.Models.ApplicationUser", b =>

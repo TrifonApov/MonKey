@@ -4,6 +4,7 @@
     using System.ComponentModel.DataAnnotations;
     using Microsoft.EntityFrameworkCore;
 
+    [Comment("The Account Currency")]
     public class Currency
     {
         [Comment("Currency's GUID")]

@@ -8,6 +8,7 @@
         [Comment("User's Birthdate")]
         public DateOnly Birthdate { get; set; }
 
+        [Comment("All user's accounts")]
         public ICollection<Account> Accounts { get; set; }
             = new HashSet<Account>();
     }
