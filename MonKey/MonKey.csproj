@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MonKey.Data\MonKey.Data.csproj" />
+    <ProjectReference Include="..\MonKey.Web.ViewModels\MonKey.Web.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

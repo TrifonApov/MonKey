@@ -1,8 +1,9 @@
 namespace MonKey.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
-    using MonKey.Models;
     using System.Diagnostics;
+    
+    using MonKey.Web.ViewModels;
 
     public class HomeController : Controller
     {
