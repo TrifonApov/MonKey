@@ -1,0 +1,54 @@
+@page
+@model MonKey.Web.Areas.Identity.Pages.Account.LoginModel
+@{
+    ViewData["Title"] = "Sign in";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-5">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4 p-md-5">
+                    <p class="text-uppercase small fw-bold text-muted mb-2">Welcome back</p>
+                    <h1 class="h3 mb-2">Sign in to Mon(K)ey</h1>
+                    <p class="text-muted mb-4">Pick up where you left off with your money.</p>
+
+                    <form method="post">
+                        <input type="hidden" asp-for="ReturnUrl" />
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="Input.Email" class="form-label"></label>
+                            <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Input.Password" class="form-label"></label>
+                            <div class="input-group password-input-group">
+                                <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" data-password-toggle-input />
+                                <button type="button" class="btn btn-outline-secondary password-toggle" data-password-toggle aria-label="Show password" aria-pressed="false">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.25 12s3.5-6 9.75-6 9.75 6 9.75 6-3.5 6-9.75 6S2.25 12 2.25 12Z" /><circle cx="12" cy="12" r="2.5" /><path class="password-eye-slash" d="m3 3 18 18" /></svg>
+                                </button>
+                            </div>
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-check mb-4">
+                            <input asp-for="Input.RememberMe" class="form-check-input" />
+                            <label asp-for="Input.RememberMe" class="form-check-label"></label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Sign in</button>
+                    </form>
+
+                    <p class="text-center text-muted mt-4 mb-0">
+                        New to Mon(K)ey? <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Create an account</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

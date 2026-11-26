@@ -16,4 +16,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.15" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MonKey.Data\MonKey.Data.csproj" />
+    <ProjectReference Include="..\MonKey.Web.ViewModels\MonKey.Web.ViewModels.csproj" />
+  </ItemGroup>
+
 </Project>

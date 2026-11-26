@@ -1,0 +1,18 @@
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-5">
+    <div class="row">
+        <aside class="col-12 col-md-3 mb-4">
+            <partial name="_ManageNav" />
+        </aside>
+        <section class="col-12 col-md-9">
+            @RenderBody()
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

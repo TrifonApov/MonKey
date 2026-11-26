@@ -1,8 +1,138 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Overview";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container dashboard-page">
+    <section class="welcome-row" aria-labelledby="welcome-title">
+        <div>
+            <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"></span> YOUR MONEY, IN FOCUS</p>
+            <h1 id="welcome-title">A little more clarity.<br /><span>A lot more possibility.</span></h1>
+            <p class="welcome-copy">A calm, clear space to get to know your money and make it work for you.</p>
+        </div>
+        <div class="preview-badge"><span aria-hidden="true">✳</span> Dashboard preview <span class="preview-divider">·</span> sample data</div>
+    </section>
+
+    <section class="overview-section" aria-labelledby="snapshot-title">
+        <div class="section-heading">
+            <div>
+                <p class="section-kicker">YOUR FINANCES AT A GLANCE</p>
+                <h2 id="snapshot-title">The big picture</h2>
+            </div>
+            <span class="period-label"><span class="period-dot" aria-hidden="true"></span> This month</span>
+        </div>
+
+        <div class="summary-grid">
+            <article class="summary-card balance-card">
+                <div class="card-topline">
+                    <span class="summary-label">Total balance</span>
+                    <span class="card-icon balance-icon" aria-hidden="true">↗</span>
+                </div>
+                <p class="summary-value">$12,840<span class="value-cents">.50</span></p>
+                <p class="summary-note"><span class="trend-positive">↗ 8.2%</span> <span>from last month</span></p>
+                <div class="balance-sparkline" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            </article>
+
+            <article class="summary-card">
+                <div class="card-topline">
+                    <span class="summary-label">Income</span>
+                    <span class="card-icon income-icon" aria-hidden="true">↓</span>
+                </div>
+                <p class="summary-value">$4,250<span class="value-cents">.00</span></p>
+                <p class="summary-note"><span class="note-dot income-dot" aria-hidden="true"></span> Coming in this month</p>
+                <div class="mini-progress" aria-hidden="true"><span class="income-progress"></span></div>
+                <p class="progress-caption"><span>Monthly target</span><strong>$5,000</strong></p>
+            </article>
+
+            <article class="summary-card">
+                <div class="card-topline">
+                    <span class="summary-label">Spending</span>
+                    <span class="card-icon spending-icon" aria-hidden="true">↗</span>
+                </div>
+                <p class="summary-value">$2,186<span class="value-cents">.35</span></p>
+                <p class="summary-note"><span class="note-dot spending-dot" aria-hidden="true"></span> Out so far this month</p>
+                <div class="mini-progress" aria-hidden="true"><span class="spending-progress"></span></div>
+                <p class="progress-caption"><span>Monthly budget</span><strong>$3,200</strong></p>
+            </article>
+        </div>
+    </section>
+
+    <div class="dashboard-lower-grid">
+        <section class="panel spending-panel" aria-labelledby="spending-title">
+            <div class="panel-heading">
+                <div>
+                    <p class="section-kicker">A HEALTHY BALANCE</p>
+                    <h2 id="spending-title">Your spending</h2>
+                </div>
+                <span class="panel-period">This week <span aria-hidden="true">⌄</span></span>
+            </div>
+            <div class="chart-summary"><span class="chart-total">$684.20</span><span class="chart-comparison"><span>↘</span> 12% less than last week</span></div>
+            <div class="chart" role="img" aria-label="Illustrative weekly spending chart, with the highest spending on Friday">
+                <div class="chart-gridline gridline-one"></div>
+                <div class="chart-gridline gridline-two"></div>
+                <div class="chart-gridline gridline-three"></div>
+                <div class="chart-bars">
+                    <div class="chart-column"><span class="chart-bar" style="--bar-height: 38%"></span><span class="chart-day">Mon</span></div>
+                    <div class="chart-column"><span class="chart-bar" style="--bar-height: 59%"></span><span class="chart-day">Tue</span></div>
+                    <div class="chart-column"><span class="chart-bar" style="--bar-height: 46%"></span><span class="chart-day">Wed</span></div>
+                    <div class="chart-column"><span class="chart-bar" style="--bar-height: 72%"></span><span class="chart-day">Thu</span></div>
+                    <div class="chart-column"><span class="chart-bar chart-bar-highlight" style="--bar-height: 88%"></span><span class="chart-day chart-day-highlight">Fri</span></div>
+                    <div class="chart-column"><span class="chart-bar" style="--bar-height: 51%"></span><span class="chart-day">Sat</span></div>
+                    <div class="chart-column"><span class="chart-bar" style="--bar-height: 29%"></span><span class="chart-day">Sun</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel goal-panel" aria-labelledby="goal-title">
+            <div class="panel-heading">
+                <div>
+                    <p class="section-kicker">SMALL STEPS, BIG DREAMS</p>
+                    <h2 id="goal-title">A goal in sight</h2>
+                </div>
+                <span class="goal-sparkle" aria-hidden="true">✳</span>
+            </div>
+            <div class="goal-art" aria-hidden="true">
+                <div class="goal-sun"></div>
+                <div class="goal-hill hill-back"></div>
+                <div class="goal-hill hill-front"></div>
+                <span class="goal-plant plant-one">✳</span>
+                <span class="goal-plant plant-two">✳</span>
+                <div class="goal-coin"><span>$</span></div>
+            </div>
+            <div class="goal-detail"><span>Weekend getaway</span><strong>68%</strong></div>
+            <div class="goal-progress" role="progressbar" aria-label="Weekend getaway savings goal" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"><span></span></div>
+            <p class="goal-caption"><strong>$1,360</strong> saved of <strong>$2,000</strong></p>
+        </section>
+    </div>
+
+    <section class="panel transactions-panel" aria-labelledby="transactions-title">
+        <div class="panel-heading transactions-heading">
+            <div>
+                <p class="section-kicker">THE LITTLE DETAILS</p>
+                <h2 id="transactions-title">Recent activity</h2>
+            </div>
+            <span class="activity-period">A few moments from your month</span>
+        </div>
+        <div class="transaction-list">
+            <div class="transaction-row">
+                <span class="transaction-icon grocery-icon" aria-hidden="true">✳</span>
+                <span class="transaction-description"><strong>Grocery market</strong><span>Food &amp; dining <span class="transaction-dot">·</span> Today, 10:42 AM</span></span>
+                <span class="transaction-amount">−$64.28</span>
+                <span class="transaction-category">Food</span>
+            </div>
+            <div class="transaction-row">
+                <span class="transaction-icon salary-icon" aria-hidden="true">↙</span>
+                <span class="transaction-description"><strong>Monthly paycheck</strong><span>Income <span class="transaction-dot">·</span> Yesterday</span></span>
+                <span class="transaction-amount amount-income">+$3,800.00</span>
+                <span class="transaction-category income-category">Income</span>
+            </div>
+            <div class="transaction-row">
+                <span class="transaction-icon coffee-icon" aria-hidden="true">☕</span>
+                <span class="transaction-description"><strong>Sunday coffee</strong><span>Food &amp; dining <span class="transaction-dot">·</span> Nov 22</span></span>
+                <span class="transaction-amount">−$8.50</span>
+                <span class="transaction-category">Food</span>
+            </div>
+        </div>
+    </section>
+
+    <p class="sample-note"><span aria-hidden="true">✳</span> This is a sample dashboard. Your personal money story starts when you sign in.</p>
 </div>

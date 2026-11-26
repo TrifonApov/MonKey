@@ -1,4 +1,4 @@
-namespace MonKey.Models
+namespace MonKey.Web.ViewModels
 {
     public class ErrorViewModel
     {
