@@ -173,8 +173,8 @@ namespace MonKey.Data.Migrations
                         .HasComment("Account Currency's ID");
 
                     b.Property<string>("Description")
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)")
                         .HasComment("Account's Description (optional)");
 
                     b.Property<bool>("IsDeleted")
