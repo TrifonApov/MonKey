@@ -11,7 +11,7 @@
             <h1 id="accounts-title">Your accounts</h1>
             <p class="welcome-copy">A clear view of where your money is held.</p>
         </div>
-        <a class="account-create-button" asp-controller="Account" asp-action="Create">
+        <a class="account-create-button" asp-controller="Account" asp-action="Create" data-create-account aria-haspopup="dialog">
             <span aria-hidden="true">＋</span> Create new account
         </a>
     </section>
@@ -47,7 +47,10 @@
             <span class="account-empty-icon" aria-hidden="true">＋</span>
             <h2 id="empty-accounts-title">Your money story starts here</h2>
             <p>You don't have any accounts yet. Add your first account to keep your balances together in one place.</p>
-            <a class="account-create-button" asp-controller="Account" asp-action="Create">Create your first account</a>
+            <a class="account-create-button" asp-controller="Account" asp-action="Create" data-create-account aria-haspopup="dialog">Create your first account</a>
         </section>
     }
 </div>
+<template id="account-create-modal-template">
+    <partial name="_CreateAccountModal" />
+</template>

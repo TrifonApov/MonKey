@@ -22,5 +22,22 @@
 
             return await userAccounts.ToArrayAsync();
         }
+
+        public async Task<IEnumerable<Currency>> GetAllCurrenciesOrderByNameAsync()
+        {
+            return await DbContext.Currencies
+                .AsNoTracking()
+                .OrderBy(currency => currency.Name)
+                .ToArrayAsync();
+        }
+
+        public async Task<bool> CreateAccountAsync(Account account)
+        {
+            await DbContext.Accounts.AddAsync(account);
+            
+            bool result = await SaveChangesAsync() == 1;
+
+            return result;
+        }
     }
 }

@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MonKey.Data.Models\MonKey.Data.Models.csproj" />
     <ProjectReference Include="..\MonKey.Data\MonKey.Data.csproj" />
+    <ProjectReference Include="..\MonKey.GCommon\MonKey.GCommon.csproj" />
     <ProjectReference Include="..\MonKey.Services.AutoMapping\MonKey.Services.AutoMapping.csproj" />
     <ProjectReference Include="..\MonKey.Services.Common\MonKey.Services.Common.csproj" />
     <ProjectReference Include="..\MonKey.Services.Models\MonKey.Services.Models.csproj" />

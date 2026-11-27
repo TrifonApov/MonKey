@@ -8,6 +8,8 @@
             public const int AccountNameMaxLength = 15;
             public const int DescriptionNameMinLength = 5;
             public const int DescriptionNameMaxLength = 200;
+            public const string MinBalanceValue = "-999999999999.99";
+            public const string MaxBalanceValue = "999999999999.99";
         }
 
         public static class Category

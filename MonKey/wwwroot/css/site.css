@@ -1038,6 +1038,39 @@ a:hover {
   line-height: 1.7;
 }
 
+.account-create-modal .modal-content {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  box-shadow: 0 22px 70px rgba(62, 42, 25, 0.18);
+}
+
+.account-create-modal .modal-header,
+.account-create-modal .modal-footer {
+  padding: 18px 22px;
+  border-color: var(--line);
+}
+
+.account-create-modal .modal-body {
+  padding: 22px;
+}
+
+.account-create-modal .modal-title {
+  color: var(--ink);
+  font-family: 'Manrope', 'Segoe UI', sans-serif;
+  font-weight: 700;
+}
+
+.account-create-modal .form-label {
+  color: var(--muted-dark);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.account-create-alert {
+  margin: 0 0 20px;
+}
+
 .site-footer {
   flex-shrink: 0;
   border-top: 1px solid var(--line);

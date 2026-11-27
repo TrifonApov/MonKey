@@ -195,7 +195,8 @@ namespace MonKey.Data.Migrations
 
                     b.HasIndex("CurrencyId");
 
-                    b.HasIndex("OwnerId");
+                    b.HasIndex("OwnerId", "Name")
+                        .IsUnique();
 
                     b.ToTable("Accounts");
                 });

@@ -5,6 +5,7 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using Microsoft.EntityFrameworkCore;
 
+    [Index(nameof(OwnerId), nameof(Name), IsUnique = true)]
     public class Account
     {
         [Comment("Account's GUID")]

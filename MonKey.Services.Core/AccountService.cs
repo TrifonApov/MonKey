@@ -4,7 +4,9 @@
     using Contracts;
     using Data.Models;
     using Data.Repository.Contracts;
+    using GCommon.Exceptions;
     using Models.Account;
+    using Models.Currency;
 
     public class AccountService : IAccountService
     {
@@ -30,5 +32,29 @@
 
             return allAccountDtos;
         }
+
+        public async Task CreateAccountAsync(CreateAccountDto accountDto)
+        {
+            Account account = mapper.Map<Account>(accountDto);
+
+            bool result = await accountRepository.CreateAccountAsync(account);
+
+            if (!result)
+            {
+                throw new EntityPersistFailureException();
+            }
+        }
+
+        public async Task<IEnumerable<CurrencyDto>> GetAllCurrenciesAsync()
+        {
+            IEnumerable<Currency> allCurrencies = await accountRepository
+                .GetAllCurrenciesOrderByNameAsync();
+
+            IEnumerable<CurrencyDto> currencyDtos = mapper
+                .Map<IEnumerable<CurrencyDto>>(allCurrencies);
+
+            return currencyDtos;
+        }
+
     }
 }
